@@ -10,4 +10,9 @@ function knigthMoves(start, end) {
     [2, -1],
     [2, 1],
   ];
+
+  // Check if the position is out of bounds (8 X 8)
+  const isValid = (row, column) => {
+    return row >= 0 && row < 8 && col >= 0 && col < 8;
+  };
 }
