@@ -1,4 +1,4 @@
-function knigthMoves(start, end) {
+function knightMoves(start, end) {
   // Create an array of all possible movements (L patterns)
   const directions = [
     [-2, -1],
@@ -12,7 +12,7 @@ function knigthMoves(start, end) {
   ];
 
   // Check if the position is out of bounds (8 X 8)
-  const isValid = (row, column) => {
+  const isValid = (row, col) => {
     return row >= 0 && row < 8 && col >= 0 && col < 8;
   };
 
@@ -35,5 +35,30 @@ function knigthMoves(start, end) {
       //console.log("PATH", path);
       return path;
     }
+
+    // Explore all 8 possible knight moves
+    for (const [dRow, dCol] of directions) {
+      const newRow = row + dRow;
+      const newCol = col + dCol;
+      const newPos = [newRow, newCol];
+
+      // If the new position is valid and not yet visited
+      if (isValid(newRow, newCol) && !visited.has(newPos.toString())) {
+        // Check as visited
+        visited.add(newPos.toString());
+        // Add the new position to the queue with the updated path
+        queue.push({ pos: newPos, path: [...path, newPos] });
+      }
+    }
   }
+  // If the end wasnt reached, return an empty path
+  return [];
 }
+
+const start = [3, 3]; // Starting position of the knight
+const end = [4, 3]; // Target position
+
+const path = knightMoves(start, end);
+
+console.log("Shortest path:");
+console.log(path);
