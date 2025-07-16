@@ -26,6 +26,7 @@ function knightMoves(start, end) {
 
   // BFS loop
   while (queue.length > 0) {
+    //console.log(visited);
     // Remove from the Q the next node
     const { pos, path } = queue.shift();
     const [row, col] = pos;
@@ -55,8 +56,8 @@ function knightMoves(start, end) {
   return [];
 }
 
-const start = [3, 3]; // Starting position of the knight
-const end = [4, 3]; // Target position
+const start = [0, 0]; // Starting position of the knight
+const end = [3, 3]; // Target position
 
 const path = knightMoves(start, end);
 
